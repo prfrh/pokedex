@@ -6,6 +6,7 @@ import requests
 usernamestored = 'rh'
 userpasswordstored = 'pokedex'
 
+
 def login():
     while True:
         #user = input("Enter a username. ")
@@ -14,12 +15,26 @@ def login():
         password = e2.get()
         if user == usernamestored and password == userpasswordstored:
             print ("Welcome RH...")
+            window.withdraw()
+            main_window()
             break
         else:
             print ("Incorrect login, try again.")
             break
            
-            
+
+
+def main_window():
+    top = Toplevel(window)
+    top.geometry("600x600")
+    top.title("Pokedex")
+    main = Label(top, text = "Welcome rh")
+    main.grid(row=0, column=1)
+    e1 = Entry(top)
+    e2 = Entry(top)
+    e1.grid(row=580, column=1)
+    e2.grid(row=590, column=1)
+    main.pack()
         
 
 
@@ -42,27 +57,17 @@ e2 = Entry(window)
 e1.grid(row=0, column=1)
 e2.grid(row=1, column=1)
 
-button = tk.Button(window, text="login",command=login)
-button.grid(row=0, column=2)
-
-
-top = Toplevel()
-top.geometry("600x600")
-top.title("Pokedex")
-l2 = Label(top, text = "Welcome rh")
-l2.pack()
+closebutton = tk.Button(window, text="close",command=window.destroy)
+closebutton.grid(row=1, column=2)
+logbutton = tk.Button(window, text="login",command=login)
+logbutton.grid(row=0, column=2)
 
 
 
-# button = tk.Button(
-#     text="Click me!",
-#     width=25,
-#     height=5,
-#     command=window.destroy,
-#     bg="blue",
-#     fg="orange",
-# )
-# button.pack()
+
+
+
+
 
 
 window.mainloop()
