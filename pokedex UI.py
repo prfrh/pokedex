@@ -28,13 +28,20 @@ def main_window():
     top = Toplevel(window)
     top.geometry("600x600")
     top.title("Pokedex")
-    main = Label(top, text = "Welcome rh")
-    main.grid(row=0, column=1)
-    e1 = Entry(top)
-    e2 = Entry(top)
-    e1.grid(row=580, column=1)
-    e2.grid(row=590, column=1)
-    main.pack()
+    txt_edit = tk.Entry(top)
+    txt_edit.grid(row=0, column=1, sticky="nsew")
+    top.title("Pokedex")
+    top.rowconfigure(2, minsize=800, weight=1)
+    top.columnconfigure(1, minsize=800, weight=1)
+    txt_edit = tk.Entry(top)
+    fr_buttons = tk.Frame(top)
+    btn_search = tk.Button(fr_buttons, text="Search")
+    btn_random = tk.Button(fr_buttons, text="Random")
+    btn_search.grid(row=0, column=0, sticky="ew", padx=5, pady=5)
+    btn_random.grid(row=1, column=0, sticky="ew", padx=5)
+    fr_buttons.grid(row=0, column=0, sticky="ns")
+    txt_edit.grid(row=0, column=1, sticky="nsew")
+    
         
 
 
