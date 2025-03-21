@@ -1,10 +1,18 @@
 from tkinter import *
 import tkinter as tk
+#from PIL import ImageTK
+#from urllib.requests import urlopen
 import requests
+
 
 
 usernamestored = 'rh'
 userpasswordstored = 'pokedex'
+
+response = requests.get("https://pokeapi.co/")
+print(response.status_code)
+
+url = "https://pokeapi.co/"
 
 
 def login():
@@ -21,7 +29,15 @@ def login():
         else:
             print ("Incorrect login, try again.")
             break
-           
+                    
+def search():
+    url = "https://pokeapi.co/api/v2/pokemon/" + txt_edit.get()
+    print(url)
+    response = requests.get(url)
+    data = response.json()
+
+
+
 
 
 def main_window():
@@ -35,20 +51,15 @@ def main_window():
     top.columnconfigure(1, minsize=800, weight=1)
     txt_edit = tk.Entry(top)
     fr_buttons = tk.Frame(top)
-    btn_search = tk.Button(fr_buttons, text="Search")
-    btn_random = tk.Button(fr_buttons, text="Random")
+    btn_search = tk.Button(fr_buttons, text="Search", command= "")
     btn_search.grid(row=0, column=0, sticky="ew", padx=5, pady=5)
-    btn_random.grid(row=1, column=0, sticky="ew", padx=5)
     fr_buttons.grid(row=0, column=0, sticky="ns")
     txt_edit.grid(row=0, column=1, sticky="nsew")
     
         
 
 
-response = requests.get("https://pokeapi.co/")
-print(response.status_code)
 
-url = ("https://pokeapi.co/")
 
 
 
